@@ -208,6 +208,10 @@ h2{
     animation-duration: 11s;
 }
 
+i{
+    display: none!important;
+}
+
 @keyframes animate {
     0% {
         transform: translateY(0) rotate(0deg);

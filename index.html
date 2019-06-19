@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300|Quicksand:300&display=swap&subset=japanese" rel="stylesheet"> 
     <link rel="stylesheet" href="io.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <title>mtsgi - github.io</title>
+    <script>
+        $("i").on("click", function(e){
+            if( $(this).attr("data-ref") ) location.href = $(this).attr("data-ref");
+            e.preventDefault();
+        })
+    </script>
 </head>
 <body>
     <div class="b">
@@ -54,7 +61,7 @@
             </div>
         </a>
 
-        <a href="https://github.com/kitstrap">
+        <a href="https://github.com/mtsgi/kitstrap">
             <div class="c" style="background-image: url(kitstrap.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>
