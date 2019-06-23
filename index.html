@@ -11,10 +11,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <title>mtsgi - github.io</title>
     <script>
-        $("i").on("click", function(e){
-            if( $(this).attr("data-ref") ) location.href = $(this).attr("data-ref");
-            e.preventDefault();
-        })
+        $( function(){
+            $(".c").on("mouseenter", function(e){
+                $(".c").addClass("transparent");
+                $(this).removeClass("transparent");
+            }).on("mouseleave", function(e){
+                $(".c").removeClass("transparent");
+            });
+        });
     </script>
 </head>
 <body>
@@ -28,7 +32,7 @@
     </h2>
     <div id="box">
 
-        <a href="https://mtsgi.github.io/kit/">
+        <a href="https://mtsgi.github.io/kit">
             <div class="c" style="background-image: url(kit.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>
@@ -50,7 +54,7 @@
             </div>
         </a>
 
-        <a href="https://kithub-beta.herokuapp.com/">
+        <a href="https://kithub-beta.herokuapp.com">
             <div class="c" style="background-image: url(image.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>
@@ -72,7 +76,7 @@
             </div>
         </a>
 
-        <a href="https://mtsgi.github.io/gradator/">
+        <a href="https://mtsgi.github.io/gradator">
             <div class="c" style="background-image: url(gradator.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>
@@ -94,7 +98,7 @@
             </div>
         </a>
 
-        <a href="https://mtsgi.github.io/nqueen/">
+        <a href="https://mtsgi.github.io/nqueen">
             <div class="c" style="background-image: url(image.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>
@@ -105,7 +109,7 @@
             </div>
         </a>
 
-        <a href="https://mtsgi.github.io/kakeibo/">
+        <a href="https://mtsgi.github.io/kakeibo">
             <div class="c" style="background-image: url(image.png)">
                 <div class="d">
                     <i data-ref="http://" class="fab fa-github"></i>

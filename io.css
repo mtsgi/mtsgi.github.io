@@ -41,8 +41,12 @@ h2{
     text-decoration: none;
 }
 
+.transparent{
+    opacity: .5!important;
+}
+
 .c{
-    opacity: .5;
+    opacity: 1;
     margin: 20px;
     font-size: 26px;
     flex-grow: 2;
