@@ -1,2 +1,2 @@
 ## github io
-- https://mtsgi.github.io/
+https://mtsgi.github.io/

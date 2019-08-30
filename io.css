@@ -29,13 +29,13 @@ h2{
     text-align: right;
 }
 
-#box{
+.box{
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
 }
 
-#box a{
+.box a{
     font-weight: 300;
     color: #404040;
     text-decoration: none;
