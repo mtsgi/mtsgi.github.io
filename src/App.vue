@@ -1,11 +1,12 @@
 <template>
   <div id="app">
+    <Links></Links>
     <template v-for="repo in repos">
       <a
-        :href="repo.href"
         :key="repo.title"
         @mouseenter="enter(repo.title)"
         @mouseleave="leave"
+        @click.prevent="open(repo.title)"
       >
         <div
           class="c"
@@ -19,25 +20,44 @@
           </div>
         </div>
       </a>
+      <Modal
+        v-show="active == repo.title"
+        v-bind:key="repo.github"
+        :data="repo"
+        @close="close"
+      ></Modal>
     </template>
   </div>
 </template>
 
 <script>
+import Modal from "./components/Modal.vue";
+import Links from "./components/Links.vue";
+
 export default {
   name: "app",
-  components: {},
+  components: {
+    Links,
+    Modal
+  },
   methods: {
     enter: function(title) {
       this.hovered = title;
     },
     leave: function() {
       this.hovered = "";
+    },
+    open: function(title) {
+      this.active = title;
+    },
+    close: function() {
+      this.active = "";
     }
   },
   data: function() {
     return {
       hovered: "",
+      active: "",
       repos: [
         {
           href: "https://mtsgi.github.io/kit",
