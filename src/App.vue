@@ -2,24 +2,26 @@
   <div id="app">
     <Links></Links>
     <template v-for="repo in repos">
-      <a
+      <div
         :key="repo.title"
         @mouseenter="enter(repo.title)"
         @mouseleave="leave"
-        @click.prevent="open(repo.title)"
       >
         <div
-          class="c"
+          class="card"
           :class="{ transparent: hovered != '' && repo.title != hovered }"
           :style="`background-image: url(bg/${repo.bg || 'image.png'})`"
         >
           <div class="d">
             <h3>{{ repo.title }}</h3>
             <h4>{{ repo.github }}</h4>
-            <h5>{{ repo.description }}</h5>
+            <div class="card-footer">
+              <a @click.prevent="open(repo.title)">DETAILS</a>
+              <a :href="repo.href" target="_blank" class="card-ext">OPEN</a>
+            </div>
           </div>
         </div>
-      </a>
+      </div>
       <Modal
         v-show="active == repo.title"
         v-bind:key="repo.github"
@@ -63,7 +65,16 @@ export default {
           href: "https://mtsgi.github.io/kit",
           title: "kitDesktop",
           github: "mtsgi/kit",
-          description: "JavaScriptで動作する軽量デスクトップ環境",
+          description:
+            "kitDesktopはインストール不要でJavaScript上で完全に動作するオープンソースのデスクトップ環境です。すべてのkitアプリケーションはHTML構造にJavaScript、それとJavaScriptを用いたkit apps frameworkを用いて記述されていて、呼び出されるとAjaxでロードされます。サーバーサイド技術は用いられていません。",
+          bg: "kit.png"
+        },
+        {
+          href: "https://mtsgi.github.io/kitdocs",
+          title: "kitドキュメント",
+          github: "mtsgi/kitdocs",
+          description:
+            "kitアプリケーションはHTMLと少しのJavaScriptの知識があればすぐに開発することができます。CSSを記述してアプリケーションのスタイルを調整することも可能ですが、kitのスタイルフレームワークであるkitstrapを使用するともっと簡単にアプリケーションのスタイルやレイアウトを組み立てることができます。",
           bg: "kit.png"
         },
         {
@@ -159,14 +170,9 @@ export default {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  a {
-    font-weight: 300;
-    color: #404040;
-    text-decoration: none;
-  }
 }
 
-.c {
+.card {
   opacity: 1;
   margin: 20px;
   font-size: 26px;
@@ -176,12 +182,14 @@ export default {
   width: 300px;
   max-width: calc(100vw - 80px);
   background-color: #ffffff;
+  color: #404040;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   transition: 0.2s all ease-in-out;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   background-position-x: center;
+  cursor: pointer;
   &:hover {
     opacity: 1;
     transform: scale(1.1);
@@ -194,13 +202,36 @@ export default {
     color: #909090;
     font-size: 16px;
     margin: 0;
-    border-bottom: 1px solid #909090;
-    padding-bottom: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
-  h5 {
-    margin: 0;
+  .card-footer {
+    display: flex;
     font-size: 18px;
+    a {
+      text-decoration: none;
+      width: 50%;
+      background: #ffffff;
+      border: 1px solid dodgerblue;
+      text-align: center;
+      color: dodgerblue;
+      margin-right: 8px;
+      padding: 5px 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.2s all ease-in-out;
+      &.card-ext {
+        margin: 0;
+        background: dodgerblue;
+        color: #ffffff;
+        &:hover {
+          border-color: #1673d1;
+          background: #1673d1;
+        }
+      }
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
   }
   .fa-github {
     position: absolute;
@@ -220,5 +251,6 @@ export default {
   bottom: 0px;
   width: 100%;
   box-sizing: border-box;
+  box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 </style>

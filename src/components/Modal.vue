@@ -9,6 +9,19 @@
         {{ data.title }}
         <div class="modal-repo">{{ data.github }}</div>
         <div class="modal-desc">{{ data.description }}</div>
+        <a class="modal-ext" :href="data.href" target="_blank">
+          新しいタブで開く
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <br />
+        <a
+          class="modal-ext"
+          :href="`https://github.com/${data.github}`"
+          target="_blank"
+        >
+          GitHubで開く
+          <i class="fab fa-github"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -72,10 +85,16 @@ export default {
       font-size: 20px;
       text-shadow: none;
       margin: 20px;
+      margin-bottom: 0;
       padding: 10px;
       border-radius: 5px;
       backdrop-filter: blur(5px);
     }
+  }
+  .modal-ext {
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
   }
 }
 </style>
