@@ -40,7 +40,7 @@ export default {
 .modal-back {
   z-index: 98;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(10px);
   top: 0;
   left: 0;
@@ -62,6 +62,9 @@ export default {
   transition: 0.2s all ease-in-out;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   background-position-x: center;
+  max-height: calc(100vh - 80px);
+  overflow-y: scroll;
+  scrollbar-width: none;
   &:hover {
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3);
   }
@@ -82,13 +85,16 @@ export default {
     .modal-desc {
       background: rgba(255, 255, 255, 0.8);
       color: #404040;
-      font-size: 20px;
+      font-size: 18px;
       text-shadow: none;
       margin: 20px;
       margin-bottom: 0;
-      padding: 10px;
+      padding: 14px;
       border-radius: 5px;
       backdrop-filter: blur(5px);
+      white-space: pre-line;
+      text-align: left;
+      line-height: 1.75;
     }
   }
   .modal-ext {
