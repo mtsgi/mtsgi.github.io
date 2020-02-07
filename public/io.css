@@ -27,92 +27,12 @@ body {
     }
 }
 
-h2{
-    margin: 0;
-    font-weight: 300;
-    font-size: 60px;
-    text-align: right;
-}
-
-.box{
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.box a{
-    font-weight: 300;
-    color: #404040;
-    text-decoration: none;
-}
-
 .transparent{
     opacity: .5!important;
 }
 
-.c{
-    opacity: 1;
-    margin: 20px;
-    font-size: 26px;
-    flex-grow: 2;
-    flex-basis: max-content;
-    height: 300px;
-    width: 300px;
-    max-width: calc(100vw - 80px);
-    background-color: #ffffff;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    transition: .2s all ease-in-out;
-    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
-    background-position-x: center;
-}
-
-.c:hover{
-    opacity: 1.0;
-    transform: scale(1.1);
-    box-shadow: 0 2px 16px 0 rgba(0,0,0,.3);
-}
-
-.d{
-    position: absolute;
-    background: rgba(255,255,255,.8);
-    padding: 10px;
-    bottom: 0px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.c h3{
-    margin: 0;
-}
-
-.c h4{
-    color: #909090;
-    font-size: 16px;
-    margin: 0;
-    border-bottom: 1px solid #909090;
-    padding-bottom: 4px;
-    margin-bottom: 4px;
-}
-
-.c h5{
-    margin: 0;
-    font-size: 18px;
-}
-
-.c .fa-github{
-    position: absolute;
-    right: 10px;
-    font-size: 30px;
-    transition: .1s all ease;
-}
-
-.c .fa-github:hover{
-    transform: scale(1.2);
-}
-
-.b {
+.background {
+    z-index: -1;
     position: fixed;
     top: 0px;
     left: 0px;
