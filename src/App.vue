@@ -12,6 +12,13 @@
           :class="{ transparent: hovered != '' && repo.title != hovered }"
           :style="`background-image: url(bg/${repo.bg || 'image.png'})`"
         >
+          <a
+            :href="`https://github.com/${repo.github}`"
+            target="_blank"
+            class="github"
+          >
+            <i class="fab fa-github"></i>
+          </a>
           <div class="d">
             <h3>{{ repo.title }}</h3>
             <h4>{{ repo.github }}</h4>
@@ -75,7 +82,7 @@ export default {
           github: "mtsgi/kitdocs",
           description:
             "kitアプリケーションを作成するためのkitシステム及びkit apps frameworkに関するドキュメントです。\nkitアプリケーションはHTMLと少しのJavaScriptの知識があればすぐに開発することができます。CSSを記述してアプリケーションのスタイルを調整することも可能ですが、kitのスタイルフレームワークであるkitstrapを使用するともっと簡単にアプリケーションのスタイルやレイアウトを組み立てることができます。",
-          bg: "kit.png"
+          bg: "kitdocs.png"
         },
         {
           href: "https://mtsgi.github.io/kish/docs",
@@ -90,7 +97,8 @@ export default {
           title: "kpt",
           github: "mtsgi/kpt",
           description:
-            "kitアプリパッケージを管理・転送するためのWebアプリケーションです。\nkishからkptコマンドを利用することでkitアプリケーションの簡単に検索・バージョン管理・アップデートが行えます。"
+            "世界中のkitアプリを、パッケージとして管理・転送するためのWebアプリケーションです。\nkishからkptコマンドを利用することでkitアプリケーションの簡単に検索・バージョン管理・アップデートが行えます。",
+          bg: "kpt.png"
         },
         {
           href: "https://mtsgi.github.io/kitstrap/docs",
@@ -101,19 +109,28 @@ export default {
           bg: "kitstrap.png"
         },
         {
+          href: "https://j.mp/otofuda",
+          title: "音札",
+          github: "mtsgi/otofudaweb",
+          description:
+            "「花札 × 対戦 × 音楽」。\n音ゲーの“対戦”の常識を覆す、これまでにない新感覚対戦型音楽カードゲーム「音札」のホームページです。\n「音札」は、リズムに乗って演奏する爽快な音楽ゲームに、花札をモチーフにした「音札」によるカードバトルを組み合わせたゲームです。\nLeapMotionによる高精度ハンドトラッキングを行い、新しい操作性を生み出しています。",
+          bg: "otofuda.png"
+        },
+        {
+          href: "https://otofudanet.herokuapp.com/",
+          title: "おとふだNET",
+          github: "mtsgi/otofudanet",
+          description:
+            "「おとふだNET」は、ICカードで「音札」をプレーしたプレイヤーデータを管理・閲覧するためのWebサービスです。\nゲーム設定やスコアネームの変更および楽曲一覧を見ることができます。",
+          bg: "otofudanet.png"
+        },
+        {
           href: "https://mtsgi.github.io/garnet",
           title: "Garnet",
           github: "mtsgi/garnet",
           description:
-            "GarnetはRubyの処理系を持つプログラミング言語です。\n柔軟な記法と絵文字を含む変数名、記号による簡潔で特徴的な言語記法を実現します。"
-        },
-        {
-          href: "https://mtsgi.github.io/gradator",
-          title: "Gradator",
-          github: "mtsgi/gradator",
-          description:
-            "CSS3グラデーションを簡単に作成、保存できるWebアプリケーションです。",
-          bg: "gradator.png"
+            "GarnetはRubyの処理系を持つオリジナルのプログラミング言語です。\n柔軟な記法と絵文字を含む変数名、記号による簡潔で特徴的な言語記法を実現します。",
+          bg: "garnet.png"
         },
         {
           href: "https://github.com/mtsgi/cpextend",
@@ -127,7 +144,8 @@ export default {
           href: "https://mtsgi.github.io/nqueen",
           title: "N-Queen",
           github: "mtsgi/nqueen",
-          description: "JavaScriptでNクイーン問題を自動的に生成します。"
+          description: "JavaScriptでNクイーン問題を自動的に生成します。",
+          bg: "nqueen.png"
         },
         {
           href: "https://mtsgi.github.io/kakeibo",
@@ -141,27 +159,39 @@ export default {
           title: "Extweet",
           github: "mtsgi/extweet",
           description:
-            "TwitterにWebページや選択テキストを一瞬で共有するChrome拡張です。"
+            "TwitterにWebページや選択テキストを一瞬で共有するChrome拡張です。",
+          bg: "extweet.png"
         },
         {
           href: "https://mtsgi.github.io/pizzada",
           title: "ピザ打",
           github: "mtsgi/pizzada",
           description:
-            "JavaScriptで動作するシンプルなタイピングゲームです。お皿は流れてきません。"
+            "JavaScriptで動作するシンプルなタイピングゲームです。お皿は流れてきません。",
+          bg: "pizzada.png"
         },
         {
           href: "https://mtsgi.github.io/happytap",
           title: "Happy Tap",
           github: "mtsgi/happytap",
-          description: "2人対戦用のPWA対応のシンプルな連打ゲームです。"
+          description: "2人対戦用のPWA対応のシンプルな連打ゲームです。",
+          bg: "happytap.png"
         },
         {
           href: "https://mtsgi.github.io/imageresizer",
           title: "Image Resizer",
           github: "mtsgi/imageresizer",
           description:
-            "画像の縦横比を維持しながら画像をリサイズするツールです。\nJavaScriptのcanvas制御で実行するため、画像をサーバーにアップロードする必要がありません。"
+            "画像の縦横比を維持しながら画像をリサイズするツールです。\nJavaScriptのcanvas制御で実行するため、画像をサーバーにアップロードする必要がありません。",
+          bg: "imageresizer.png"
+        },
+        {
+          href: "https://mtsgi.github.io/gradator",
+          title: "Gradator",
+          github: "mtsgi/gradator",
+          description:
+            "CSS3グラデーションを簡単に作成、保存できるWebアプリケーションです。",
+          bg: "gradator.png"
         },
         {
           href: "https://mtsgi.github.io/githubtl",
@@ -220,6 +250,16 @@ export default {
     margin: 0;
     margin-bottom: 10px;
   }
+  .github {
+    color: #fff;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
+    svg {
+      margin-top: 10px;
+    }
+  }
   .card-footer {
     display: flex;
     font-size: 18px;
@@ -262,8 +302,8 @@ export default {
 
 .d {
   position: absolute;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 10px 15px 10px;
   bottom: 0px;
   width: 100%;
   box-sizing: border-box;
