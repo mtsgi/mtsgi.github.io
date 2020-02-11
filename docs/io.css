@@ -13,6 +13,7 @@ body {
     box-sizing: border-box;
     scrollbar-color: light;
     scrollbar-width: thin;
+    overscroll-behavior: none;
 }
 
 @keyframes bg {
