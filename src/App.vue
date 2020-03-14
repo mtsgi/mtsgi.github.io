@@ -12,6 +12,7 @@
           :class="{ transparent: hovered != '' && repo.title != hovered }"
           :style="`background-image: url(bg/${repo.bg || 'image.png'})`"
         >
+          <div class="g" @click.prevent="open(repo.title)"></div>
           <a
             :href="`https://github.com/${repo.github}`"
             target="_blank"
@@ -107,6 +108,14 @@ export default {
           description:
             "簡単に導入・カスタマイズできる軽量CSSフレームワークです。\n・kitstrapはkitDesktopのデザイン言語に基づいています。\n・kitstrapパッケージではフォントやカーソルの設定はモジュール化されています。\n・kitstrapは!important規則を使用しません。",
           bg: "kitstrap.png"
+        },
+        {
+          href: "https://mtsgi.github.io/kafjs",
+          title: "kafjs",
+          github: "mtsgi/kafjs",
+          description:
+            "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立したWebアプリケーションのためのJavaScriptフレームワークです。\nリアルタイムのデータバインディングやDOMへのイベントハンドリングを容易にします。",
+          bg: "kafjs.png"
         },
         {
           href: "https://j.mp/otofuda",
@@ -232,14 +241,14 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  transition: 0.2s all ease-in-out;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.15s all ease-in-out;
+  box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.2);
   background-position-x: center;
   cursor: pointer;
   &:hover {
     opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3);
+    transform: scale(1.075);
+    box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.4);
   }
   h3 {
     margin: 0;
@@ -299,7 +308,16 @@ export default {
     }
   }
 }
-
+.g {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  transition: 0.1s all ease;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
 .d {
   position: absolute;
   background: rgba(255, 255, 255, 0.9);

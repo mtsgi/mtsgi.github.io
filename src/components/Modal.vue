@@ -61,14 +61,11 @@ export default {
   left: 20px;
   top: 20px;
   transition: 0.2s all ease-in-out;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
   background-position-x: center;
   max-height: calc(100vh - 80px);
   overflow-y: scroll;
   scrollbar-width: none;
-  &:hover {
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3);
-  }
   .modal-title {
     padding: 5px;
     padding-bottom: 10px;
