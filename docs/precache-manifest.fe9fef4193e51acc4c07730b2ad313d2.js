@@ -68,11 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bg/pizzada.png"
   },
   {
-    "revision": "48f3be6abad36d419155",
-    "url": "/css/app.bd5f48e0.css"
+    "revision": "ea13c94e14f6ee77b79d",
+    "url": "/css/app.81f73008.css"
   },
   {
-    "revision": "1da79a31be4e3e5f2cba4c8662ad5d83",
+    "revision": "517ea96833b1399ecd820f170664745d",
     "url": "/index.html"
   },
   {
@@ -80,8 +80,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/io.css"
   },
   {
-    "revision": "48f3be6abad36d419155",
-    "url": "/js/app.730a6c46.js"
+    "revision": "ea13c94e14f6ee77b79d",
+    "url": "/js/app.3dbd666b.js"
   },
   {
     "revision": "b361e49e844a86b5256b",
