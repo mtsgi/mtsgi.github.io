@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div class="background">
+      <ul class="o">
+        <li v-for="i in 10" :key="i"></li>
+      </ul>
+    </div>
     <Links></Links>
     <template v-for="repo in repos">
       <div
@@ -20,6 +25,9 @@
           >
             <i class="fab fa-github"></i>
           </a>
+          <span v-if="repo.badge" class="card-badge">
+            {{ repo.badge }}
+          </span>
           <div class="d">
             <h3>{{ repo.title }}</h3>
             <h4>{{ repo.github }}</h4>
@@ -75,7 +83,26 @@ export default {
           github: "mtsgi/kit",
           description:
             "kitDesktopはインストール不要でJavaScript上で完全に動作するオープンソースのデスクトップ環境です。\nすべてのkitアプリケーションはHTML構造にJavaScript、それとJavaScriptを用いたkit apps frameworkを用いて記述されていて、呼び出されるとAjaxでロードされます。\nサーバーサイド技術は用いられていません。",
-          bg: "kit.png"
+          bg: "kit.png",
+          badge: "Apache-2.0"
+        },
+        {
+          href: "https://mtsgi.github.io/kitstrap/docs",
+          title: "kitstrap",
+          github: "mtsgi/kitstrap",
+          description:
+            "簡単に導入・カスタマイズできる軽量CSSフレームワークです。\n・kitstrapはkitDesktopのデザイン言語に基づいています。\n・kitstrapパッケージではフォントやカーソルの設定はモジュール化されています。\n・kitstrapは!important規則を使用しません。",
+          bg: "kitstrap.png",
+          badge: "MIT"
+        },
+        {
+          href: "https://mtsgi.github.io/kafjs",
+          title: "kafjs",
+          github: "mtsgi/kafjs",
+          description:
+            "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立したWebアプリケーションのためのJavaScriptフレームワークです。\nリアルタイムのデータバインディングやDOMへのイベントハンドリングを容易にします。",
+          bg: "kafjs.png",
+          badge: "MIT"
         },
         {
           href: "https://mtsgi.github.io/kitdocs",
@@ -100,22 +127,6 @@ export default {
           description:
             "世界中のkitアプリを、パッケージとして管理・転送するためのWebアプリケーションです。\nkishからkptコマンドを利用することでkitアプリケーションの簡単に検索・バージョン管理・アップデートが行えます。",
           bg: "kpt.png"
-        },
-        {
-          href: "https://mtsgi.github.io/kitstrap/docs",
-          title: "kitstrap",
-          github: "mtsgi/kitstrap",
-          description:
-            "簡単に導入・カスタマイズできる軽量CSSフレームワークです。\n・kitstrapはkitDesktopのデザイン言語に基づいています。\n・kitstrapパッケージではフォントやカーソルの設定はモジュール化されています。\n・kitstrapは!important規則を使用しません。",
-          bg: "kitstrap.png"
-        },
-        {
-          href: "https://mtsgi.github.io/kafjs",
-          title: "kafjs",
-          github: "mtsgi/kafjs",
-          description:
-            "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立したWebアプリケーションのためのJavaScriptフレームワークです。\nリアルタイムのデータバインディングやDOMへのイベントハンドリングを容易にします。",
-          bg: "kafjs.png"
         },
         {
           href: "https://j.mp/otofuda",
@@ -268,6 +279,18 @@ export default {
     svg {
       margin-top: 10px;
     }
+  }
+  .card-badge {
+    position: absolute;
+    left: 0;
+    bottom: 130px;
+    color: #ffffff;
+    background: #68ac77;
+    font-size: 14px;
+    margin: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   }
   .card-footer {
     display: flex;
