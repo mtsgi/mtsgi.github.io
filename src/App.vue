@@ -6,7 +6,72 @@
       </ul>
     </div>
     <Links></Links>
-    <template v-for="repo in repos">
+    <div class="filter">
+      <a
+        :class="{
+          active: dispTag == 'all'
+        }"
+        @click="filter('all')"
+        >ALL</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'js'
+        }"
+        @click="filter('js')"
+        >JavaScript</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'css'
+        }"
+        @click="filter('css')"
+        >CSS</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'ruby'
+        }"
+        @click="filter('ruby')"
+        >Ruby</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'mit'
+        }"
+        @click="filter('mit')"
+        >MIT License</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'apache'
+        }"
+        @click="filter('apache')"
+        >Apache-2.0 License</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'tool'
+        }"
+        @click="filter('tool')"
+        >ツール</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'game'
+        }"
+        @click="filter('game')"
+        >ゲーム</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'extension'
+        }"
+        @click="filter('extension')"
+        >拡張機能</a
+      >
+    </div>
+    <template v-for="repo in disp">
       <div
         :key="repo.title"
         @mouseenter="enter(repo.title)"
@@ -25,9 +90,7 @@
           >
             <i class="fab fa-github"></i>
           </a>
-          <span v-if="repo.badge" class="card-badge">
-            {{ repo.badge }}
-          </span>
+          <span v-if="repo.badge" class="card-badge">{{ repo.badge }}</span>
           <div class="d">
             <h3>{{ repo.title }}</h3>
             <h4>{{ repo.github }}</h4>
@@ -70,7 +133,20 @@ export default {
     },
     close: function() {
       this.active = "";
+    },
+    filter: function(tag) {
+      this.dispTag = tag;
+      if (tag === "all") {
+        this.disp = this.repos;
+      } else {
+        this.disp = this.repos.filter(repo =>
+          repo.tags.split(" ").includes(tag)
+        );
+      }
     }
+  },
+  mounted() {
+    this.filter("all");
   },
   data: function() {
     return {
@@ -84,7 +160,8 @@ export default {
           description:
             "kitDesktopはインストール不要でJavaScript上で完全に動作するオープンソースのデスクトップ環境です。\nすべてのkitアプリケーションはHTML構造にJavaScript、それとJavaScriptを用いたkit apps frameworkを用いて記述されていて、呼び出されるとAjaxでロードされます。\nサーバーサイド技術は用いられていません。",
           bg: "kit.png",
-          badge: "Apache-2.0"
+          badge: "Apache-2.0",
+          tags: "js apache kit"
         },
         {
           href: "https://mtsgi.github.io/kitstrap/docs",
@@ -93,7 +170,8 @@ export default {
           description:
             "簡単に導入・カスタマイズできる軽量CSSフレームワークです。\n・kitstrapはkitDesktopのデザイン言語に基づいています。\n・kitstrapパッケージではフォントやカーソルの設定はモジュール化されています。\n・kitstrapは!important規則を使用しません。",
           bg: "kitstrap.png",
-          badge: "MIT"
+          badge: "MIT",
+          tags: "css mit kit"
         },
         {
           href: "https://mtsgi.github.io/kafjs",
@@ -102,7 +180,8 @@ export default {
           description:
             "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立したWebアプリケーションのためのJavaScriptフレームワークです。\nリアルタイムのデータバインディングやDOMへのイベントハンドリングを容易にします。",
           bg: "kafjs.png",
-          badge: "MIT"
+          badge: "MIT",
+          tags: "js mit kit"
         },
         {
           href: "https://mtsgi.github.io/kitdocs",
@@ -110,7 +189,8 @@ export default {
           github: "mtsgi/kitdocs",
           description:
             "kitアプリケーションを作成するためのkitシステム及びkit apps frameworkに関するドキュメントです。\nkitアプリケーションはHTMLと少しのJavaScriptの知識があればすぐに開発することができます。CSSを記述してアプリケーションのスタイルを調整することも可能ですが、kitのスタイルフレームワークであるkitstrapを使用するともっと簡単にアプリケーションのスタイルやレイアウトを組み立てることができます。",
-          bg: "kitdocs.png"
+          bg: "kitdocs.png",
+          tags: "documentation kit"
         },
         {
           href: "https://mtsgi.github.io/kish/docs",
@@ -118,7 +198,8 @@ export default {
           github: "mtsgi/kish",
           description:
             "kishはkitDesktopのための強力なシェルです。\nkit上で様々なkishコマンドを利用できます。",
-          bg: "kish.png"
+          bg: "kish.png",
+          tags: "js kit"
         },
         {
           href: "https://kpkg.herokuapp.com",
@@ -126,7 +207,8 @@ export default {
           github: "mtsgi/kpt",
           description:
             "世界中のkitアプリを、パッケージとして管理・転送するためのWebアプリケーションです。\nkishからkptコマンドを利用することでkitアプリケーションの簡単に検索・バージョン管理・アップデートが行えます。",
-          bg: "kpt.png"
+          bg: "kpt.png",
+          tags: "ruby kit"
         },
         {
           href: "https://j.mp/otofuda",
@@ -134,7 +216,8 @@ export default {
           github: "mtsgi/otofudaweb",
           description:
             "「花札 × 対戦 × 音楽」。\n音ゲーの“対戦”の常識を覆す、これまでにない新感覚対戦型音楽カードゲーム「音札」のホームページです。\n「音札」は、リズムに乗って演奏する爽快な音楽ゲームに、花札をモチーフにした「音札」によるカードバトルを組み合わせたゲームです。\nLeapMotionによる高精度ハンドトラッキングを行い、新しい操作性を生み出しています。",
-          bg: "otofuda.png"
+          bg: "otofuda.png",
+          tags: "html"
         },
         {
           href: "https://otofudanet.herokuapp.com/",
@@ -142,7 +225,18 @@ export default {
           github: "mtsgi/otofudanet",
           description:
             "「おとふだNET」は、ICカードで「音札」をプレーしたプレイヤーデータを管理・閲覧するためのWebサービスです。\nゲーム設定やスコアネームの変更および楽曲一覧を見ることができます。",
-          bg: "otofudanet.png"
+          bg: "otofudanet.png",
+          tags: "ruby"
+        },
+        {
+          href: "https://mtsgi.github.io/bury",
+          title: "Bury.js",
+          github: "mtsgi/bury",
+          description:
+            "Bury.jsはJavaScriptのプロトタイプを拡張し、Ruby風のメソッドを利用可能にします。",
+          bg: "bury.png",
+          badge: "MIT",
+          tags: "js mit"
         },
         {
           href: "https://mtsgi.github.io/garnet",
@@ -150,7 +244,8 @@ export default {
           github: "mtsgi/garnet",
           description:
             "GarnetはRubyの処理系を持つオリジナルのプログラミング言語です。\n柔軟な記法と絵文字を含む変数名、記号による簡潔で特徴的な言語記法を実現します。",
-          bg: "garnet.png"
+          bg: "garnet.png",
+          tags: "ruby"
         },
         {
           href: "https://github.com/mtsgi/cpextend",
@@ -158,21 +253,24 @@ export default {
           github: "mtsgi/cpextend",
           description:
             "CoursePowerをちょっと便利にしてくれるChrome拡張機能です。",
-          bg: "cpex.png"
+          bg: "cpex.png",
+          tags: "js extension"
         },
         {
           href: "https://mtsgi.github.io/nqueen",
           title: "N-Queen",
           github: "mtsgi/nqueen",
           description: "JavaScriptでNクイーン問題を自動的に生成します。",
-          bg: "nqueen.png"
+          bg: "nqueen.png",
+          tags: "js game"
         },
         {
           href: "https://mtsgi.github.io/kakeibo",
           title: "JS家計簿",
           github: "mtsgi/kakeibo",
           description:
-            "DBを使わない(LocalStorageで完結する)軽量クライアントサイド家計簿です。"
+            "DBを使わない(LocalStorageで完結する)軽量クライアントサイド家計簿です。",
+          tags: "js tool"
         },
         {
           href: "https://github.com/mtsgi/extweet",
@@ -180,7 +278,8 @@ export default {
           github: "mtsgi/extweet",
           description:
             "TwitterにWebページや選択テキストを一瞬で共有するChrome拡張です。",
-          bg: "extweet.png"
+          bg: "extweet.png",
+          tags: "js extension"
         },
         {
           href: "https://mtsgi.github.io/pizzada",
@@ -188,14 +287,16 @@ export default {
           github: "mtsgi/pizzada",
           description:
             "JavaScriptで動作するシンプルなタイピングゲームです。お皿は流れてきません。",
-          bg: "pizzada.png"
+          bg: "pizzada.png",
+          tags: "js game"
         },
         {
           href: "https://mtsgi.github.io/happytap",
           title: "Happy Tap",
           github: "mtsgi/happytap",
           description: "2人対戦用のPWA対応のシンプルな連打ゲームです。",
-          bg: "happytap.png"
+          bg: "happytap.png",
+          tags: "js game"
         },
         {
           href: "https://mtsgi.github.io/imageresizer",
@@ -203,7 +304,8 @@ export default {
           github: "mtsgi/imageresizer",
           description:
             "画像の縦横比を維持しながら画像をリサイズするツールです。\nJavaScriptのcanvas制御で実行するため、画像をサーバーにアップロードする必要がありません。",
-          bg: "imageresizer.png"
+          bg: "imageresizer.png",
+          tags: "js tool canvas"
         },
         {
           href: "https://mtsgi.github.io/gradator",
@@ -211,21 +313,27 @@ export default {
           github: "mtsgi/gradator",
           description:
             "CSS3グラデーションを簡単に作成、保存できるWebアプリケーションです。",
-          bg: "gradator.png"
+          bg: "gradator.png",
+          tags: "js tool"
         },
         {
           href: "https://mtsgi.github.io/githubtl",
           title: "GitHubTL",
           github: "mtsgi/githubtl",
-          description: "ユーザーのGitHubタイムラインを表示できるWebアプリです。"
+          description:
+            "ユーザーのGitHubタイムラインを表示できるWebアプリです。",
+          tags: "js tool"
         },
         {
           href: "https://mtsgi.github.io/insregexp",
           title: "Instant RegExp",
           github: "mtsgi/insregexp",
-          description: "正規表現をリアルタイムで評価する簡単なビューワーです。"
+          description: "正規表現をリアルタイムで評価する簡単なビューワーです。",
+          tags: "js tool"
         }
-      ]
+      ],
+      disp: [],
+      dispTag: "all"
     };
   }
 };
@@ -285,11 +393,12 @@ export default {
     left: 0;
     bottom: 130px;
     color: #ffffff;
-    background: #68ac77;
+    background: #71d887;
     font-size: 14px;
+    font-weight: 600;
     margin: 8px;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 3px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   }
   .card-footer {
@@ -349,5 +458,25 @@ export default {
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.filter {
+  width: 100%;
+  margin: 30px 20px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+  a {
+    padding: 8px 12px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    &.active {
+      font-weight: 600;
+      color: #23a6d5;
+      background-clip: text;
+      background: #ffffff;
+    }
+  }
 }
 </style>
