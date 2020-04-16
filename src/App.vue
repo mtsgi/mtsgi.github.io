@@ -145,6 +145,15 @@ export default {
           bg: "otofudanet.png"
         },
         {
+          href: "https://mtsgi.github.io/bury",
+          title: "Bury.js",
+          github: "mtsgi/bury",
+          description:
+            "Bury.jsはJavaScriptのプロトタイプを拡張し、Ruby風のメソッドを利用可能にします。",
+          bg: "bury.png",
+          badge: "MIT"
+        },
+        {
           href: "https://mtsgi.github.io/garnet",
           title: "Garnet",
           github: "mtsgi/garnet",
@@ -285,11 +294,12 @@ export default {
     left: 0;
     bottom: 130px;
     color: #ffffff;
-    background: #68ac77;
+    background: #71d887;
     font-size: 14px;
+    font-weight: 600;
     margin: 8px;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 3px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   }
   .card-footer {
