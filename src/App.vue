@@ -217,7 +217,7 @@ export default {
           description:
             "「花札 × 対戦 × 音楽」。\n音ゲーの“対戦”の常識を覆す、これまでにない新感覚対戦型音楽カードゲーム「音札」のホームページです。\n「音札」は、リズムに乗って演奏する爽快な音楽ゲームに、花札をモチーフにした「音札」によるカードバトルを組み合わせたゲームです。\nLeapMotionによる高精度ハンドトラッキングを行い、新しい操作性を生み出しています。",
           bg: "otofuda.png",
-          tags: "html"
+          tags: "html game"
         },
         {
           href: "https://otofudanet.herokuapp.com/",
@@ -227,6 +227,15 @@ export default {
             "「おとふだNET」は、ICカードで「音札」をプレーしたプレイヤーデータを管理・閲覧するためのWebサービスです。\nゲーム設定やスコアネームの変更および楽曲一覧を見ることができます。",
           bg: "otofudanet.png",
           tags: "ruby"
+        },
+        {
+          href: "https://mtsgi.github.io/fumenedit/editor.html",
+          title: "譜面エディター",
+          github: "mtsgi/fumenedit",
+          description:
+            "「音札」独自フォーマットの譜面データをGUIで作成できるエディターです。",
+          bg: "fumenedit.png",
+          tags: "js tool"
         },
         {
           href: "https://mtsgi.github.io/bury",
@@ -255,6 +264,15 @@ export default {
             "CoursePowerをちょっと便利にしてくれるChrome拡張機能です。",
           bg: "cpex.png",
           tags: "js extension"
+        },
+        {
+          href: "https://mtsgi.github.io/defgen",
+          title: "defgen",
+          github: "mtsgi/defgen",
+          description:
+            "kitDesktop用アプリ開発に便利なdefine.json自動生成ツールです。",
+          bg: "defgen.png",
+          tags: "kit js tool"
         },
         {
           href: "https://mtsgi.github.io/nqueen",
