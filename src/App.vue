@@ -84,6 +84,7 @@
         >
           <div class="g" @click.prevent="open(repo.title)"></div>
           <a
+            v-if="repo.github"
             :href="`https://github.com/${repo.github}`"
             target="_blank"
             class="github"
@@ -93,7 +94,7 @@
           <span v-if="repo.badge" class="card-badge">{{ repo.badge }}</span>
           <div class="d">
             <h3>{{ repo.title }}</h3>
-            <h4>{{ repo.github }}</h4>
+            <h4>{{ repo.github || repo.repository }}</h4>
             <div class="card-footer">
               <a @click.prevent="open(repo.title)">DETAILS</a>
               <a :href="repo.href" target="_blank" class="card-ext">OPEN</a>
@@ -236,6 +237,15 @@ export default {
             "「音札」独自フォーマットの譜面データをGUIで作成できるエディターです。",
           bg: "fumenedit.png",
           tags: "js tool"
+        },
+        {
+          href: "https://senshu-edps.net/",
+          title: "EDPS公式サイト",
+          repository: "edpsweb",
+          description:
+            "電子計算機研究会の公式ウェブサイトです。ブログ機能・イベント機能などの部員コミュニティサイト機能も備えています。",
+          bg: "edps.png",
+          tags: "ruby"
         },
         {
           href: "https://mtsgi.github.io/bury",

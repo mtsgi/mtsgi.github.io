@@ -7,6 +7,7 @@
         :style="`background-image: url(bg/${data.bg || 'image.png'})`"
       >
         <a
+          v-if="data.github"
           class="modal-github"
           :href="`https://github.com/${data.github}`"
           target="_blank"
