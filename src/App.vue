@@ -507,4 +507,18 @@ export default {
     }
   }
 }
+.dark {
+  .filter a.active {
+    color: #303030;
+  }
+  .d {
+    background: #505050;
+    color: #ffffff;
+    .card-footer a:not(.card-ext) {
+      background: transparent;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
+}
 </style>
