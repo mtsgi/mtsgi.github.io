@@ -4,9 +4,9 @@
       <a href="https://github.com/mtsgi" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-        <a @click="toggleMode()">
-          <i class="fa fa-adjust"></i>
-        </a>
+      <a @click="toggleMode()">
+        <i class="fa fa-adjust"></i>
+      </a>
     </div>
     <h2>mtsgi <span>github.io</span></h2>
   </div>

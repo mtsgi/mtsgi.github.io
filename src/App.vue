@@ -58,6 +58,20 @@
       >
       <a
         :class="{
+          active: dispTag == 'library'
+        }"
+        @click="filter('library')"
+        >ライブラリ</a
+      >
+      <a
+        :class="{
+          active: dispTag == 'framework'
+        }"
+        @click="filter('framework')"
+        >フレームワーク</a
+      >
+      <a
+        :class="{
           active: dispTag == 'game'
         }"
         @click="filter('game')"
@@ -172,17 +186,17 @@ export default {
             "簡単に導入・カスタマイズできる軽量CSSフレームワークです。\n・kitstrapはkitDesktopのデザイン言語に基づいています。\n・kitstrapパッケージではフォントやカーソルの設定はモジュール化されています。\n・kitstrapは!important規則を使用しません。",
           bg: "kitstrap.png",
           badge: "MIT",
-          tags: "css mit kit"
+          tags: "css mit kit framework"
         },
         {
-          href: "https://mtsgi.github.io/kafjs",
+          href: "https://kafjs.netlify.app/",
           title: "kafjs",
           github: "mtsgi/kafjs",
           description:
-            "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立したWebアプリケーションのためのJavaScriptフレームワークです。\nリアルタイムのデータバインディングやDOMへのイベントハンドリングを容易にします。",
+            "kafjsは、kitカーネルのフレームワーク機能「kit apps framework」から独立した、フォーム要素等を利用したデータのバインディングや、辞書を定義するだけで利用できる強力なi18nのための機能、非常に便利でかんたんなイベントバインディングシステムなどを持った高機能かつ軽量なWebアプリケーション制作のためのJavaScriptアプリケーションフレームワークです。",
           bg: "kafjs.png",
           badge: "MIT",
-          tags: "js mit kit"
+          tags: "js mit kit framework"
         },
         {
           href: "https://mtsgi.github.io/kitdocs",
@@ -252,10 +266,20 @@ export default {
           title: "Bury.js",
           github: "mtsgi/bury",
           description:
-            "Bury.jsはJavaScriptのプロトタイプを拡張し、Ruby風のメソッドを利用可能にします。",
+            "Bury.jsはJavaScriptのプロトタイプを拡張し、Ruby風のメソッドを利用可能にするライブラリです。",
           bg: "bury.png",
           badge: "MIT",
-          tags: "js mit"
+          tags: "js mit library"
+        },
+        {
+          href: "https://mtsgi.github.io/writedown",
+          title: "Writedown",
+          github: "mtsgi/writedown",
+          description:
+            "HTMLマークアップの中にCSSセレクター方式のクラス記述とID記述を行うことができるJavaScriptライブラリです。",
+          bg: "writedown.png",
+          badge: "MIT",
+          tags: "js mit library"
         },
         {
           href: "https://mtsgi.github.io/garnet",
