@@ -4,13 +4,13 @@
     "title": "kitDesktop",
     "github": "mtsgi/kit",
     "description":
-      "kitDesktopはインストール不要でJavaScript上で完全に動作するオープンソースのデスクトップ環境です。\nすべてのkitアプリケーションはHTML構造にJavaScript、それとJavaScriptを用いたkit apps frameworkを用いて記述されており、呼び出されるとAjaxでロードされます。\nサーバーサイド技術は用いられていません。",
+      "kitDesktopはインストール不要でJavaScript上で完全に動作するオープンソースのデスクトップ環境です。\nすべてのkitアプリケーションはHTML構造にJavaScript、それとJavaScriptを用いたkit apps frameworkを用いて記述されており、呼び出されるとAjaxでロードされます。",
     "bg": "kit.png",
     "badge": "Apache-2.0",
     "tags": "js apache kit"
   },
   {
-    "href": "https://mtsgi.github.io/kitstrap/docs",
+    "href": "https://kitstrap.netlify.app/",
     "title": "kitstrap",
     "github": "mtsgi/kitstrap",
     "description":
@@ -93,6 +93,15 @@
     "tags": "ruby"
   },
   {
+    "href": "https://github.com/mtsgi/flavour",
+    "title": "Flavour",
+    "github": "mtsgi/flavour",
+    "description":
+      "Flavourはnode.jsのエコシステムを活用した拡張性豊かでモダンなオープンソースWikiシステムです。",
+    "bg": "flavour.png",
+    "tags": "js framework"
+  },
+  {
     "href": "https://mtsgi.github.io/bury",
     "title": "Bury.js",
     "github": "mtsgi/bury",
@@ -122,6 +131,16 @@
     "tags": "ruby"
   },
   {
+    "href": "https://github.com/mtsgi/gpex",
+    "title": "Gpex",
+    "github": "mtsgi/gpex",
+    "description":
+      "Google Classroomをさらに便利に使うことができるWeb Extensionです。Chrome/Firefox対応。",
+    "bg": "gpex.png",
+    "badge": "MIT",
+    "tags": "js extension mit"
+  },
+  {
     "href": "https://github.com/mtsgi/cpextend",
     "title": "Cpex",
     "github": "mtsgi/cpextend",
@@ -129,6 +148,15 @@
       "CoursePowerをちょっと便利にしてくれるChrome拡張機能です。",
     "bg": "cpex.png",
     "tags": "js extension"
+  },
+  {
+    "href": "https://github.com/mtsgi/co",
+    "title": "Co",
+    "github": "mtsgi/co",
+    "description":
+      "CoはシンプルなJavaScriptコンソールを提供するElectron製アプリケーションです。",
+    "bg": "co.png",
+    "tags": "js tool electron"
   },
   {
     "href": "https://mtsgi.github.io/defgen",
@@ -152,7 +180,8 @@
     "title": "JS家計簿",
     "github": "mtsgi/kakeibo",
     "description":
-      "RDBを使わず、LocalStorageで完結する軽量クライアントサイド家計簿です。",
+      "RDBを使わず、LocalStorageだけで完結する軽量クライアントサイド家計簿です。",
+    "bg": "kakeibo.png",
     "tags": "js tool"
   },
   {
@@ -201,10 +230,11 @@
   },
   {
     "href": "https://mtsgi.github.io/githubtl",
-    "title": "GitHubTL",
+    "title": "GitHub TL Viewer",
     "github": "mtsgi/githubtl",
     "description":
       "ユーザーのGitHubタイムラインを表示できるWebアプリです。",
+      "bg": "githubtl.png",
     "tags": "js tool"
   },
   {
@@ -212,6 +242,7 @@
     "title": "Instant RegExp",
     "github": "mtsgi/insregexp",
     "description": "正規表現をリアルタイムで評価するシンプルなビューワーです。",
+    "bg": "insregexp.png",
     "tags": "js tool"
   }
 ]
