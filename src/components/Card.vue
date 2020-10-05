@@ -34,7 +34,7 @@
 export default {
   props: {
     repo: {
-      type: String,
+      type: Object,
       required: true
     },
     opaque: {

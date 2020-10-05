@@ -190,12 +190,72 @@ export default {
   /deep/ .card__detail {
     background: #505050;
     color: #ffffff;
+    > h3 {
+      color: #ffffff;
+    }
     .card__footer a:not(.card__ext) {
       box-shadow: none;
       background: transparent;
       border-color: #ffffff;
       color: #ffffff;
     }
+  }
+}
+
+/deep/ .modal__readme {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  strong {
+    font-weight: 700;
+  }
+  a {
+    color: dodgerblue;
+  }
+  ul {
+    margin: 0;
+    li {
+      line-height: 1rem;
+    }
+  }
+  pre {
+    margin: 0;
+    padding: 12px;
+    overflow: auto;
+    scrollbar-width: thin;
+    font-size: 90%;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    code {
+      background: transparent;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  code {
+    padding: 0.2em 0.4em;
+    margin: 0 4px;
+    font-size: 90%;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+  }
+  p {
+    word-wrap: break-word;
+    margin: 0;
+    img {
+      max-width: 100%;
+      display: inline;
+    }
+  }
+  blockquote {
+    margin: 0;
+    color: #606060;
+    border-left: 4px solid #ffffff;
+    padding-left: 16px;
   }
 }
 </style>

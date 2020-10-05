@@ -21,12 +21,20 @@
           新しいタブで開く
           <i class="fas fa-external-link-alt"></i>
         </a>
+
+        <div
+          class="modal__readme"
+          v-show="readmeHtml"
+          v-html="readmeHtml"
+        ></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import marked from "marked";
+
 export default {
   props: {
     data: {
@@ -34,12 +42,35 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      readmeHtml: null
+    };
+  },
+  mounted() {
+    fetch(this.readmeLink)
+      .then(res => {
+        if (res.ok) return res.text();
+        else throw new Error("XHR Error");
+      })
+      .then(data => {
+        this.readmeHtml = marked(data, {
+          baseUrl: this.readmeBaseUrl
+        });
+      });
+  },
   computed: {
     backgroundImage() {
       return `url(bg/${this.data.bg || "image.png"})`;
     },
     githubLink() {
       return `https://github.com/${this.data.github}`;
+    },
+    readmeLink() {
+      return `https://raw.githubusercontent.com/${this.data.github}/master/README.md`;
+    },
+    readmeBaseUrl() {
+      return `https://raw.githubusercontent.com/${this.data.github}/master/`;
     }
   }
 };
@@ -58,25 +89,25 @@ export default {
 }
 .modal {
   z-index: 99;
-  margin: 20px;
+  margin: 0;
   border-radius: 12px;
-  width: calc(100% - 160px);
   color: #404040;
   background-color: #ffffff;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   position: fixed;
-  left: 80px;
+  left: 10%;
   top: 60px;
+  width: calc(80%);
+  max-height: calc(100% - 120px);
   transition: 0.2s all ease-in-out;
   box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.5);
-  max-height: calc(100vh - 80px);
   overflow-y: scroll;
   scrollbar-width: none;
 
   &__container {
-    padding: 0 0 10px 0;
+    padding: 0;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0 3px 8px -3px rgba(0, 0, 0, 0.3);
@@ -102,7 +133,7 @@ export default {
   &__repo {
     color: #cccccc;
     font-size: 28px;
-    margin: 15px 0 0 0;
+    margin: 8px 0 0 0;
   }
 
   &__desc {
@@ -137,6 +168,19 @@ export default {
       border-color: #1673d1;
       background: #1673d1;
     }
+  }
+
+  &__readme {
+    background: rgba(255, 255, 255, 0.65);
+    color: #404040;
+    font-size: 18px;
+    text-shadow: none;
+    margin: 32px 0 0;
+    padding: 16px 24px;
+    backdrop-filter: blur(5px);
+    white-space: pre-line;
+    text-align: left;
+    line-height: 1.25;
   }
 }
 </style>
