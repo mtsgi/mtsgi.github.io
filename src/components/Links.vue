@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: "links",
   data() {
     return {
       darkmode: false
