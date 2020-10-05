@@ -6,7 +6,7 @@ body {
     background-size: 400% 400%;
     animation: bg 15s ease infinite;
     color: white;
-    font-family: 'Quicksand', 'Noto Sans JP', sans-serif;
+    font-family: 'Poppins', 'Noto Sans JP', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -14,6 +14,10 @@ body {
     scrollbar-color: light;
     scrollbar-width: thin;
     overscroll-behavior: none;
+}
+
+body.dark-body {
+    background: #303030;
 }
 
 @keyframes bg {
@@ -29,7 +33,7 @@ body {
 }
 
 .transparent{
-    opacity: .5!important;
+    opacity: .75!important;
 }
 
 .background {
@@ -138,8 +142,12 @@ body {
     animation-duration: 11s;
 }
 
-i{
+i {
     display: none!important;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 @keyframes animate {
@@ -153,8 +161,4 @@ i{
         opacity: 0;
         border-radius: 10%;
     }
-}
-
-.dark-body {
-    background: #303030;
 }
