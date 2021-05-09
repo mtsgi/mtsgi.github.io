@@ -120,11 +120,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bg/writedown.png"
   },
   {
-    "revision": "013848d22f65636cdbc6",
+    "revision": "2c8a49dd465dfb843d03",
     "url": "/css/app.c076dbe9.css"
   },
   {
-    "revision": "42f4b541f498a47c86b799997e292caf",
+    "revision": "bf8e3233bc4e4de2813c60be926cafd5",
     "url": "/index.html"
   },
   {
@@ -132,8 +132,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/io.css"
   },
   {
-    "revision": "013848d22f65636cdbc6",
-    "url": "/js/app.bec05fc1.js"
+    "revision": "2c8a49dd465dfb843d03",
+    "url": "/js/app.fe194f68.js"
   },
   {
     "revision": "fcc3b7a7ec7350970e34",
