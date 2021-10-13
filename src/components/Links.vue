@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      darkmode: false
+      darkmode: false,
     };
   },
   methods: {
@@ -30,8 +30,8 @@ export default {
         document.querySelector("body").classList.add("dark-body");
         document.querySelector("#app").classList.add("dark");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

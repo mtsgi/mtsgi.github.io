@@ -39,23 +39,23 @@ export default {
   props: {
     data: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      readmeHtml: null
+      readmeHtml: null,
     };
   },
   mounted() {
     fetch(this.readmeLink)
-      .then(res => {
+      .then((res) => {
         if (res.ok) return res.text();
         else throw new Error("XHR Error");
       })
-      .then(data => {
+      .then((data) => {
         this.readmeHtml = marked(data, {
-          baseUrl: this.readmeBaseUrl
+          baseUrl: this.readmeBaseUrl,
         });
       });
   },
@@ -71,8 +71,8 @@ export default {
     },
     readmeBaseUrl() {
       return `https://raw.githubusercontent.com/${this.data.github}/master/`;
-    }
-  }
+    },
+  },
 };
 </script>
 
