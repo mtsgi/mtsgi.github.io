@@ -7,6 +7,7 @@
     @mouseleave="$emit('mouse-blur')"
   >
     <div class="card__area" @click.prevent="$emit('open-modal')"></div>
+
     <a
       v-if="repo.github"
       :href="`https://github.com/${repo.github}`"
@@ -16,9 +17,11 @@
     >
       <i class="fab fa-github"></i>
     </a>
+
     <span v-if="repo.badge" class="card__badge">
       {{ repo.badge }}
     </span>
+
     <div class="card__detail">
       <h3>{{ repo.title }}</h3>
       <h4>{{ repo.github || repo.repository }}</h4>
@@ -89,18 +92,15 @@ export default {
 
   &__github-icon {
     color: #ffffff;
-    opacity: 0.8;
+    opacity: 1;
+    position: absolute;
+    right: 10px;
+    font-size: 40px;
     &:hover {
-      opacity: 1;
+      color: #404040;
     }
     .fa-github {
-      position: absolute;
-      right: 10px;
-      font-size: 40px;
       transition: 0.1s all ease;
-      &:hover {
-        color: #aaaaaa;
-      }
     }
     svg {
       margin-top: 10px;

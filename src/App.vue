@@ -1,104 +1,40 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ dark: isDark }">
     <div class="background">
       <ul class="o">
-        <li v-for="i in 10" :key="i"></li>
+        <li v-for="i in 10" :key="`o-${i}`" />
       </ul>
     </div>
-    <Links></Links>
+
+    <Header @switch-dark="switchDark" />
+
     <div class="filter">
       <a
+        v-for="filter in filters"
+        :key="filter.tag"
         :class="{
-          active: dispTag == 'all',
+          active: dispTag === filter.tag,
         }"
-        @click="filter('all')"
-        >ALL</a
+        @click="applyFilter(filter.tag)"
       >
-      <a
-        :class="{
-          active: dispTag == 'js',
-        }"
-        @click="filter('js')"
-        >JavaScript</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'css',
-        }"
-        @click="filter('css')"
-        >CSS</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'ruby',
-        }"
-        @click="filter('ruby')"
-        >Ruby</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'mit',
-        }"
-        @click="filter('mit')"
-        >MIT License</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'apache',
-        }"
-        @click="filter('apache')"
-        >Apache-2.0 License</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'tool',
-        }"
-        @click="filter('tool')"
-        >ツール</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'library',
-        }"
-        @click="filter('library')"
-        >ライブラリ</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'framework',
-        }"
-        @click="filter('framework')"
-        >フレームワーク</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'game',
-        }"
-        @click="filter('game')"
-        >ゲーム</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'extension',
-        }"
-        @click="filter('extension')"
-        >拡張機能</a
-      >
+        {{ filter.text }}
+      </a>
     </div>
-    <div v-for="repo in disp" :key="repo.title">
+
+    <div v-for="repo in dispRepos" :key="repo.title">
       <Card
         :repo="repo"
         :opaque="!hovered || hovered === repo.title"
         @mouse-hover="enter(repo.title)"
         @mouse-blur="leave"
         @open-modal="open(repo.title)"
-      ></Card>
+      />
       <Modal
         v-if="active === repo.title"
         v-bind:key="repo.github"
         :data="repo"
         @close="close"
-      ></Modal>
+      />
     </div>
   </div>
 </template>
@@ -106,51 +42,100 @@
 <script>
 import Modal from "./components/Modal.vue";
 import Card from "./components/Card.vue";
-import Links from "./components/Links.vue";
+import Header from "./components/Header.vue";
 
-import repos from "./assets/repos.json";
+import repos from "./assets/repos.js";
 
 export default {
   components: {
-    Links,
+    Header,
     Card,
     Modal,
   },
   methods: {
-    enter: function (title) {
+    enter(title) {
       this.hovered = title;
     },
-    leave: function () {
+    leave() {
       this.hovered = null;
     },
-    open: function (title) {
+    open(title) {
       this.active = title;
     },
-    close: function () {
+    close() {
       this.active = null;
     },
-    filter: function (tag) {
-      this.dispTag = tag;
-      if (tag === "all") {
-        this.disp = this.repos;
-      } else {
-        this.disp = this.repos.filter((repo) =>
-          repo.tags.split(" ").includes(tag)
-        );
-      }
+    switchDark() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("-dark", this.isDark);
     },
-  },
-  mounted() {
-    this.filter("all");
+    applyFilter(tag) {
+      this.dispTag = tag;
+    },
   },
   data: function () {
     return {
+      isDark: false,
       hovered: null,
       active: null,
       disp: [],
       dispTag: "all",
       repos,
+      filters: [
+        {
+          text: "ALL",
+          tag: "all",
+        },
+        {
+          text: "JavaScript",
+          tag: "js",
+        },
+        {
+          text: "CSS",
+          tag: "css",
+        },
+        {
+          text: "Ruby",
+          tag: "ruby",
+        },
+        {
+          text: "MIT License",
+          tag: "mit",
+        },
+        {
+          text: "Apache-2.0 License",
+          tag: "apache",
+        },
+        {
+          text: "ツール",
+          tag: "tool",
+        },
+        {
+          text: "ライブラリ",
+          tag: "library",
+        },
+        {
+          text: "フレームワーク",
+          tag: "framework",
+        },
+        {
+          text: "ゲーム",
+          tag: "game",
+        },
+        {
+          text: "拡張機能",
+          tag: "extension",
+        },
+      ],
     };
+  },
+  computed: {
+    dispRepos() {
+      if (this.dispTag === "all") return this.repos;
+      return this.repos.filter((repo) =>
+        repo.tags.split(" ").includes(this.dispTag)
+      );
+    },
   },
 };
 </script>
