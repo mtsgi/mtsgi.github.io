@@ -35,18 +35,18 @@ export default {
   props: {
     repo: {
       type: Object,
-      required: true
+      required: true,
     },
     opaque: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   computed: {
     backgroundImage() {
       return `url(bg/${this.repo.bg || "image.png"})`;
-    }
-  }
+    },
+  },
 };
 </script>
 

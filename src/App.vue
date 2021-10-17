@@ -9,77 +9,77 @@
     <div class="filter">
       <a
         :class="{
-          active: dispTag == 'all'
+          active: dispTag == 'all',
         }"
         @click="filter('all')"
         >ALL</a
       >
       <a
         :class="{
-          active: dispTag == 'js'
+          active: dispTag == 'js',
         }"
         @click="filter('js')"
         >JavaScript</a
       >
       <a
         :class="{
-          active: dispTag == 'css'
+          active: dispTag == 'css',
         }"
         @click="filter('css')"
         >CSS</a
       >
       <a
         :class="{
-          active: dispTag == 'ruby'
+          active: dispTag == 'ruby',
         }"
         @click="filter('ruby')"
         >Ruby</a
       >
       <a
         :class="{
-          active: dispTag == 'mit'
+          active: dispTag == 'mit',
         }"
         @click="filter('mit')"
         >MIT License</a
       >
       <a
         :class="{
-          active: dispTag == 'apache'
+          active: dispTag == 'apache',
         }"
         @click="filter('apache')"
         >Apache-2.0 License</a
       >
       <a
         :class="{
-          active: dispTag == 'tool'
+          active: dispTag == 'tool',
         }"
         @click="filter('tool')"
         >ツール</a
       >
       <a
         :class="{
-          active: dispTag == 'library'
+          active: dispTag == 'library',
         }"
         @click="filter('library')"
         >ライブラリ</a
       >
       <a
         :class="{
-          active: dispTag == 'framework'
+          active: dispTag == 'framework',
         }"
         @click="filter('framework')"
         >フレームワーク</a
       >
       <a
         :class="{
-          active: dispTag == 'game'
+          active: dispTag == 'game',
         }"
         @click="filter('game')"
         >ゲーム</a
       >
       <a
         :class="{
-          active: dispTag == 'extension'
+          active: dispTag == 'extension',
         }"
         @click="filter('extension')"
         >拡張機能</a
@@ -114,44 +114,44 @@ export default {
   components: {
     Links,
     Card,
-    Modal
+    Modal,
   },
   methods: {
-    enter: function(title) {
+    enter: function (title) {
       this.hovered = title;
     },
-    leave: function() {
+    leave: function () {
       this.hovered = null;
     },
-    open: function(title) {
+    open: function (title) {
       this.active = title;
     },
-    close: function() {
+    close: function () {
       this.active = null;
     },
-    filter: function(tag) {
+    filter: function (tag) {
       this.dispTag = tag;
       if (tag === "all") {
         this.disp = this.repos;
       } else {
-        this.disp = this.repos.filter(repo =>
+        this.disp = this.repos.filter((repo) =>
           repo.tags.split(" ").includes(tag)
         );
       }
-    }
+    },
   },
   mounted() {
     this.filter("all");
   },
-  data: function() {
+  data: function () {
     return {
       hovered: null,
       active: null,
       disp: [],
       dispTag: "all",
-      repos
+      repos,
     };
-  }
+  },
 };
 </script>
 
