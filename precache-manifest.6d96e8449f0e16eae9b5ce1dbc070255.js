@@ -120,11 +120,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bg/writedown.png"
   },
   {
-    "revision": "bcff8b103aab7a4240eb",
-    "url": "/css/app.c076dbe9.css"
+    "revision": "78a3ce41e831adee8bb1",
+    "url": "/css/app.6bbe6614.css"
   },
   {
-    "revision": "001f24876de410289777b8ded96205d0",
+    "revision": "5e391a2eeafdc21dcbd3452ec2bba0eb",
     "url": "/index.html"
   },
   {
@@ -132,15 +132,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/io.css"
   },
   {
-    "revision": "bcff8b103aab7a4240eb",
-    "url": "/js/app.c4a404d9.js"
+    "revision": "78a3ce41e831adee8bb1",
+    "url": "/js/app.26830b46.js"
   },
   {
-    "revision": "fcc3b7a7ec7350970e34",
-    "url": "/js/chunk-vendors.7e31eb6c.js"
+    "revision": "50d2441d44394069e54a",
+    "url": "/js/chunk-vendors.e59f440c.js"
   },
   {
-    "revision": "520e2a2387178fb0a52f2bb6783ef057",
+    "revision": "a487dc89a84ade7fd3bdb017380e1d93",
     "url": "/manifest.json"
   },
   {
