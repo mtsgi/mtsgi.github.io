@@ -1,173 +1,155 @@
 <template>
-  <div id="app">
+  <div :class="{ dark: isDark }">
     <div class="background">
       <ul class="o">
-        <li v-for="i in 10" :key="i"></li>
+        <li v-for="i in 10" :key="`o-${i}`" />
       </ul>
     </div>
-    <Links></Links>
+
+    <Header @switch-dark="switchDark" />
+
     <div class="filter">
       <a
+        v-for="filter in filters"
+        :key="filter.tag"
         :class="{
-          active: dispTag == 'all',
+          active: dispTag === filter.tag,
         }"
-        @click="filter('all')"
-        >ALL</a
+        @click="applyFilter(filter.tag)"
       >
-      <a
-        :class="{
-          active: dispTag == 'js',
-        }"
-        @click="filter('js')"
-        >JavaScript</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'css',
-        }"
-        @click="filter('css')"
-        >CSS</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'ruby',
-        }"
-        @click="filter('ruby')"
-        >Ruby</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'mit',
-        }"
-        @click="filter('mit')"
-        >MIT License</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'apache',
-        }"
-        @click="filter('apache')"
-        >Apache-2.0 License</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'tool',
-        }"
-        @click="filter('tool')"
-        >ツール</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'library',
-        }"
-        @click="filter('library')"
-        >ライブラリ</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'framework',
-        }"
-        @click="filter('framework')"
-        >フレームワーク</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'game',
-        }"
-        @click="filter('game')"
-        >ゲーム</a
-      >
-      <a
-        :class="{
-          active: dispTag == 'extension',
-        }"
-        @click="filter('extension')"
-        >拡張機能</a
-      >
+        {{ filter.text }}
+      </a>
     </div>
-    <div v-for="repo in disp" :key="repo.title">
+
+    <div class="cards">
       <Card
+        v-for="repo in dispRepos"
+        :key="repo.title"
         :repo="repo"
         :opaque="!hovered || hovered === repo.title"
+        :active="active"
         @mouse-hover="enter(repo.title)"
         @mouse-blur="leave"
-        @open-modal="open(repo.title)"
-      ></Card>
-      <Modal
-        v-if="active === repo.title"
-        v-bind:key="repo.github"
-        :data="repo"
-        @close="close"
-      ></Modal>
+        @open-modal="onOpen(repo.title)"
+      />
     </div>
+
+    <Modal v-if="activeRepo" :data="activeRepo" @close="onClose" />
   </div>
 </template>
 
 <script>
 import Modal from "./components/Modal.vue";
 import Card from "./components/Card.vue";
-import Links from "./components/Links.vue";
+import Header from "./components/Header.vue";
 
-import repos from "./assets/repos.json";
+import repos from "./assets/repos.js";
 
 export default {
   components: {
-    Links,
+    Header,
     Card,
     Modal,
   },
   methods: {
-    enter: function (title) {
+    enter(title) {
       this.hovered = title;
     },
-    leave: function () {
+    leave() {
       this.hovered = null;
     },
-    open: function (title) {
+    onOpen(title) {
       this.active = title;
     },
-    close: function () {
+    onClose() {
       this.active = null;
     },
-    filter: function (tag) {
-      this.dispTag = tag;
-      if (tag === "all") {
-        this.disp = this.repos;
-      } else {
-        this.disp = this.repos.filter((repo) =>
-          repo.tags.split(" ").includes(tag)
-        );
-      }
+    switchDark() {
+      this.isDark = !this.isDark;
+      document.body.classList.toggle("-dark", this.isDark);
     },
-  },
-  mounted() {
-    this.filter("all");
+    applyFilter(tag) {
+      this.dispTag = tag;
+    },
   },
   data: function () {
     return {
+      isDark: false,
       hovered: null,
       active: null,
       disp: [],
       dispTag: "all",
       repos,
+      filters: [
+        {
+          text: "ALL",
+          tag: "all",
+        },
+        {
+          text: "JavaScript",
+          tag: "js",
+        },
+        {
+          text: "CSS",
+          tag: "css",
+        },
+        {
+          text: "Ruby",
+          tag: "ruby",
+        },
+        {
+          text: "MIT License",
+          tag: "mit",
+        },
+        {
+          text: "Apache-2.0 License",
+          tag: "apache",
+        },
+        {
+          text: "ツール",
+          tag: "tool",
+        },
+        {
+          text: "ライブラリ",
+          tag: "library",
+        },
+        {
+          text: "フレームワーク",
+          tag: "framework",
+        },
+        {
+          text: "ゲーム",
+          tag: "game",
+        },
+        {
+          text: "拡張機能",
+          tag: "extension",
+        },
+      ],
     };
+  },
+  computed: {
+    dispRepos() {
+      if (this.dispTag === "all") return this.repos;
+      return this.repos.filter((repo) =>
+        repo.tags.split(" ").includes(this.dispTag)
+      );
+    },
+    activeRepo() {
+      return this.repos.find((repo) => repo.title === this.active);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-#app {
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .filter {
   width: 100%;
-  margin: 30px 20px 10px;
+  margin: 32px 0px;
   display: flex;
   flex-wrap: wrap;
   line-height: 1;
+  letter-spacing: 1px;
   a {
     padding: 8px 12px;
     cursor: pointer;
@@ -175,12 +157,19 @@ export default {
       background: rgba(255, 255, 255, 0.5);
     }
     &.active {
-      font-weight: 600;
+      font-weight: bold;
       color: #23a6d5;
       background-clip: text;
       background: #ffffff;
     }
   }
+}
+
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 .dark {
@@ -208,7 +197,7 @@ export default {
   h3,
   h4 {
     font-weight: 700;
-    margin: 8px 0;
+    margin: 0 0 12px 0;
   }
   strong {
     font-weight: 700;
@@ -217,19 +206,19 @@ export default {
     color: dodgerblue;
   }
   ul {
-    margin: 0;
+    margin: 0 0 12px 0;
     li {
-      line-height: 1rem;
+      line-height: 1.75em;
     }
   }
   pre {
-    margin: 0;
+    margin: 0 0 12px 0;
     padding: 12px;
     overflow: auto;
     scrollbar-width: thin;
     font-size: 90%;
     background-color: #f0f0f0;
-    border-radius: 6px;
+    border-radius: 8px;
     code {
       background: transparent;
       margin: 0;
@@ -245,7 +234,7 @@ export default {
   }
   p {
     word-wrap: break-word;
-    margin: 0;
+    margin: 0 0 12px 0;
     img {
       max-width: 100%;
       display: inline;
@@ -256,6 +245,12 @@ export default {
     color: #606060;
     border-left: 4px solid #ffffff;
     padding-left: 16px;
+  }
+  hr {
+    height: 2px;
+    margin: 24px 0;
+    border: none;
+    background: #f0f0f0;
   }
 }
 </style>

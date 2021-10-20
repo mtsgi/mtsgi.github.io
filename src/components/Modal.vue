@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="modal-back" @click="$emit('close')"></div>
+
     <div class="modal" :style="{ backgroundImage }">
       <div class="modal__container">
         <a
@@ -57,7 +58,8 @@ export default {
         this.readmeHtml = marked(data, {
           baseUrl: this.readmeBaseUrl,
         });
-      });
+      })
+      .catch((err) => console.error(err));
   },
   computed: {
     backgroundImage() {
@@ -178,7 +180,7 @@ export default {
     margin: 32px 0 0;
     padding: 16px 24px;
     backdrop-filter: blur(5px);
-    white-space: pre-line;
+    white-space: normal;
     text-align: left;
     line-height: 1.25;
   }

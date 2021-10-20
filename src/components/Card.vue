@@ -7,6 +7,7 @@
     @mouseleave="$emit('mouse-blur')"
   >
     <div class="card__area" @click.prevent="$emit('open-modal')"></div>
+
     <a
       v-if="repo.github"
       :href="`https://github.com/${repo.github}`"
@@ -16,9 +17,11 @@
     >
       <i class="fab fa-github"></i>
     </a>
+
     <span v-if="repo.badge" class="card__badge">
       {{ repo.badge }}
     </span>
+
     <div class="card__detail">
       <h3>{{ repo.title }}</h3>
       <h4>{{ repo.github || repo.repository }}</h4>
@@ -39,7 +42,13 @@ export default {
     },
     opaque: {
       type: Boolean,
+      required: false,
       default: true,
+    },
+    active: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   computed: {
@@ -53,13 +62,12 @@ export default {
 <style lang="scss" scoped>
 .card {
   opacity: 1;
-  margin: 20px;
   font-size: 26px;
   flex-grow: 2;
   flex-basis: max-content;
   height: 300px;
-  width: 300px;
   max-width: calc(100vw - 80px);
+  border-radius: 12px;
   background-color: #ffffff;
   color: #404040;
   background-size: cover;
@@ -89,18 +97,15 @@ export default {
 
   &__github-icon {
     color: #ffffff;
-    opacity: 0.8;
+    opacity: 1;
+    position: absolute;
+    right: 10px;
+    font-size: 40px;
     &:hover {
-      opacity: 1;
+      color: #404040;
     }
     .fa-github {
-      position: absolute;
-      right: 10px;
-      font-size: 40px;
       transition: 0.1s all ease;
-      &:hover {
-        color: #aaaaaa;
-      }
     }
     svg {
       margin-top: 10px;
@@ -116,8 +121,8 @@ export default {
     font-size: 16px;
     font-weight: 700;
     margin: 0 12px;
-    padding: 5px 8px;
-    border-radius: 5px 5px 0 0;
+    padding: 4px 12px;
+    border-radius: 8px 8px 0 0;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   }
 
@@ -129,6 +134,7 @@ export default {
     width: 100%;
     box-sizing: border-box;
     box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 12px 12px;
     h3 {
       color: #606060;
       font-weight: 700;
@@ -147,7 +153,8 @@ export default {
   &__footer {
     display: flex;
     font-size: 20px;
-    a {
+
+    > a {
       text-decoration: none;
       width: 50%;
       background: #ffffff;
@@ -156,8 +163,8 @@ export default {
       color: dodgerblue;
       margin-right: 8px;
       padding: 2px 0;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px 0 rgba(22, 115, 209, 0.4);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px 0 rgba(22, 115, 209, 0.3);
       transition: 0.05s all ease-in-out;
       &.card__ext {
         margin: 0;

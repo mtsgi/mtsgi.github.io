@@ -1,15 +1,16 @@
 <template>
-  <div class="links">
-    <div>
+  <header class="header">
+    <div class="header__links">
       <a href="https://github.com/mtsgi" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-      <a @click="toggleMode()">
+      <a @click="$emit('switch-dark')">
         <i class="fa fa-adjust"></i>
       </a>
     </div>
-    <h2>mtsgi <span>github.io</span></h2>
-  </div>
+
+    <h1 class="header__title">mtsgi <span>github.io</span></h1>
+  </header>
 </template>
 
 <script>
@@ -36,18 +37,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.links {
+.header {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  div {
+  align-items: center;
+
+  &__links {
     flex-grow: 1;
-    a {
+    > a {
       color: #ffffff;
       font-size: 30px;
-      position: relative;
-      left: 20px;
-      top: 18px;
       margin-right: 20px;
       cursor: pointer;
       &:hover {
@@ -55,13 +54,14 @@ export default {
       }
     }
   }
-  h2 {
+
+  &__title {
     margin: 0;
     font-weight: 300;
     font-size: 60px;
     text-align: right;
-    span {
-      opacity: 0.6;
+    > span {
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 }
