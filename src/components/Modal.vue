@@ -180,7 +180,7 @@ export default {
     margin: 32px 0 0;
     padding: 16px 24px;
     backdrop-filter: blur(5px);
-    white-space: pre-line;
+    white-space: normal;
     text-align: left;
     line-height: 1.25;
   }

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 10px;
+  padding: 32px;
   min-height: 100vh;
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   background-size: 400% 400%;
@@ -47,7 +47,7 @@ body.-dark {
 }
 
 .o {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

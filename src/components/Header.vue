@@ -40,15 +40,13 @@ export default {
 .header {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  align-items: center;
+
   &__links {
     flex-grow: 1;
     > a {
       color: #ffffff;
       font-size: 30px;
-      position: relative;
-      left: 20px;
-      top: 18px;
       margin-right: 20px;
       cursor: pointer;
       &:hover {
@@ -56,6 +54,7 @@ export default {
       }
     }
   }
+
   &__title {
     margin: 0;
     font-weight: 300;
