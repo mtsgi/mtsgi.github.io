@@ -7,6 +7,14 @@ module.exports = {
     themeColor: "#92fe9f",
   },
 
+  css: {
+    loaderOptions: {
+      sass: {
+        implementation: require("sass"),
+      },
+    },
+  },
+
   chainWebpack: (config) => {
     config.resolve.alias.set("vue", "@vue/compat");
 
