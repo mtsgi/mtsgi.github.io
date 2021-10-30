@@ -27,7 +27,7 @@
         :key="repo.title"
         :repo="repo"
         :opaque="!hovered || hovered === repo.title"
-        :active="active"
+        :active="repo.title === active"
         @mouse-hover="enter(repo.title)"
         @mouse-blur="leave"
         @open-modal="onOpen(repo.title)"
@@ -176,8 +176,8 @@ export default {
   .filter a.active {
     color: #303030;
   }
-  /deep/ .card__detail {
-    background: #505050;
+  ::v-deep .card__detail {
+    background: #303030;
     color: #ffffff;
     > h3 {
       color: #ffffff;
@@ -191,7 +191,7 @@ export default {
   }
 }
 
-/deep/ .modal__readme {
+::v-deep .modal__readme {
   h1,
   h2,
   h3,
@@ -235,6 +235,7 @@ export default {
   p {
     word-wrap: break-word;
     margin: 0 0 12px 0;
+    line-height: 1.5;
     img {
       max-width: 100%;
       display: inline;

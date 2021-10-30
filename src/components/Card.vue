@@ -1,3 +1,30 @@
+<script setup>
+/* global defineProps */
+
+import { computed } from "@vue/reactivity";
+
+const props = defineProps({
+  repo: {
+    type: Object,
+    required: true,
+  },
+  opaque: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  active: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+
+const backgroundImage = computed(
+  () => `url(bg/${props.repo.bg || "image.png"})`
+);
+</script>
+
 <template>
   <div
     class="card"
@@ -32,32 +59,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    repo: {
-      type: Object,
-      required: true,
-    },
-    opaque: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    active: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  computed: {
-    backgroundImage() {
-      return `url(bg/${this.repo.bg || "image.png"})`;
-    },
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 .card {

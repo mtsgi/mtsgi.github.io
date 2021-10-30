@@ -92,7 +92,7 @@ export default {
 .modal {
   z-index: 99;
   margin: 0;
-  border-radius: 12px;
+  border-radius: 16px;
   color: #404040;
   background-color: #ffffff;
   background-size: cover;
@@ -107,6 +107,7 @@ export default {
   box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.5);
   overflow-y: scroll;
   scrollbar-width: none;
+  overscroll-behavior: contain;
 
   &__container {
     padding: 0;
